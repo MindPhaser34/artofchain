@@ -1,6 +1,6 @@
 # Art Of Chain
 
-Here is a collection of working materials such as dockerfiles, docker compose yamls, helm-charts, configs, etc for articles from the blog [@art_of_chain](https://t.me/art_of_chain).
+Here is a collection of dockerfiles, docker compose yamls, helm-charts, config files, etc for easy blockchain nodes deploy.
 
 For coffee:
 USDT(TRC20): TFhK112kAEgzaefAA4SGpZH5UGPiY1obX8
