@@ -1,0 +1,35 @@
+
+# Create folders before start
+# mkdir -p data && chown -R 1000:1000 ./data/ 
+
+services:
+  bitcoind:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BITCOIN_VERSION: 30.0
+    container_name: bitcoin-mainnet
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          cpus: '1.0'
+          memory: 2G
+    volumes:
+      - ./data:/opt/bitcoind/data
+      - ./bitcoin.conf:/opt/bitcoind/bitcoin.conf:ro
+    ports:
+      - "8333:8333"
+      - "127.0.0.1:8332:8332"
+      - "127.0.0.1:28332:28332"
+      - "127.0.0.1:28333:28333"
+    healthcheck:
+      test: ["CMD", "bitcoin-cli", "-conf=/opt/bitcoind/bitcoin.conf", "getblockchaininfo"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
