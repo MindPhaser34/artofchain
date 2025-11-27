@@ -2,8 +2,9 @@ FROM debian:stable-slim AS builde
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000
+ARG BITCOIN_VERSION=30.0
 
-ENV BITCOIN_VERSION=30.0 \
+ENV BITCOIN_VERSION=${BITCOIN_VERSION} \
     BITCOIN_ROOT=/opt/bitcoind \
     BITCOIN_BIN=/opt/bitcoind/bin \
     BITCOIN_DATA=/opt/bitcoind/data \
@@ -26,7 +27,8 @@ RUN cd /opt \
  && mv /opt/bitcoin-${BITCOIN_VERSION}/bin/* ${BITCOIN_BIN}/ \
  && rm -rf /opt/bitcoin-${BITCOIN_VERSION} /opt/bitcoin-${BITCOIN_VERSION}-x86_64-linux-gnu.tar.gz
 
-EXPOSE 8332 8333 18332 18333 
+EXPOSE 8332 8333 18332 18333
+# 48332 48333 Uncomment for testnet4
 # 18443 18444 Uncomment for regtest
 
 VOLUME ["${BITCOIN_DATA}"]
