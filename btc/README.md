@@ -20,10 +20,10 @@ Bitcoin Core full node with Prometheus metrics exporter and Grafana dashboard.
 mkdir -p data
 
 # Start all services
-docker-compose up -d
+docker compose up -d
 
 # Check status
-docker-compose ps
+docker compose ps
 ```
 
 ## Access
@@ -152,7 +152,7 @@ docker logs bitcoin-mainnet
 docker logs bitcoin-exporter
 
 # All services
-docker-compose logs -f
+docker compose logs -f
 ```
 
 ### Verify metrics
@@ -168,7 +168,7 @@ curl http://localhost:9090/api/v1/targets
 ### Restart services
 
 ```bash
-docker-compose restart
+docker compose restart
 ```
 
 ## License
