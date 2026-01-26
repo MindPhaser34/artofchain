@@ -17,15 +17,17 @@ Ethereum full node (Geth + Nimbus) with Prometheus metrics exporter and Grafana 
 ```bash
 # Create data directories
 mkdir -p ./nimbus-data ./geth-data
+chmod 700 ./nimbus-data
+chown 1000:1000 ./nimbus-data
 
 # Generate JWT secret
 openssl rand -hex 32 > jwt.hex
 
 # Start all services
-docker-compose up -d
+docker compose up -d
 
 # Check status
-docker-compose ps
+docker compose ps
 ```
 
 ## Access
